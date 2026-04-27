@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Link from "next/link";
+import NavClient from "@/components/NavClient";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -33,20 +34,7 @@ export default function RootLayout({
             <Link href="/" className="text-xl font-bold text-gray-900 tracking-tight">
               Marketplace
             </Link>
-            <div className="flex items-center gap-6">
-              <Link href="/browse" className="text-sm text-gray-600 hover:text-gray-900 transition-colors">
-                Browse
-              </Link>
-              <Link href="/create-listing" className="text-sm text-gray-600 hover:text-gray-900 transition-colors">
-                Sell
-              </Link>
-              <Link href="/orders" className="text-sm text-gray-600 hover:text-gray-900 transition-colors">
-                Orders
-              </Link>
-              <Link href="/login" className="text-sm font-medium text-white bg-gray-900 px-4 py-2 rounded-md hover:bg-gray-800 transition-colors">
-                Sign In
-              </Link>
-            </div>
+            <NavClient />
           </div>
         </nav>
         <main>{children}</main>

@@ -1,0 +1,11 @@
+user_id,first_name,last_name,email,password,address,reg_date
+1,Dan,White,dan.white@email.com,password123,"456 Oak Ave, Dallas, TX 75201",2025-09-01
+2,Claire,Thomas,claire.thomas@email.com,password123,"789 Elm St, Dallas, TX 75202",2025-09-02
+3,Edward,Roman,edward.roman@email.com,password123,"321 Pine Rd, Richardson, TX 75080",2025-09-03
+4,April,Maxwell,april.maxwell@email.com,password123,"654 Maple Ln, Plano, TX 75024",2025-09-04
+5,Alice,Johnson,alice.johnson@email.com,password123,"111 Cedar Blvd, Irving, TX 75038",2025-09-05
+6,Bob,Williams,bob.williams@email.com,password123,"222 Birch St, Garland, TX 75040",2025-09-06
+7,Carol,Davis,carol.davis@email.com,password123,"333 Walnut Ave, Frisco, TX 75034",2025-09-07
+8,David,Lee,david.lee@email.com,password123,"444 Spruce Dr, McKinney, TX 75069",2025-09-08
+9,Emma,Brown,emma.brown@email.com,password123,"555 Willow Ct, Allen, TX 75002",2025-09-09
+10,Frank,Wilson,frank.wilson@email.com,password123,"666 Aspen Way, Lewisville, TX 75067",2025-09-10

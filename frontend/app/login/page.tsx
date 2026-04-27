@@ -1,12 +1,50 @@
 "use client";
 
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 
 export default function LoginPage() {
+  const router = useRouter();
   const [isSignUp, setIsSignUp] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
+
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    setError("");
+    setLoading(true);
+
+    const form = new FormData(e.currentTarget);
+    const payload: Record<string, string> = { action: isSignUp ? "signup" : "login" };
+    for (const [key, value] of form.entries()) {
+      payload[key] = value.toString();
+    }
+
+    try {
+      const res = await fetch("/api/auth", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
+      const data = await res.json();
+
+      if (!res.ok) {
+        setError(data.error ?? "Something went wrong");
+        return;
+      }
+
+      localStorage.setItem("user", JSON.stringify(data.user));
+      window.dispatchEvent(new Event("userUpdated"));
+      router.push("/browse");
+    } catch {
+      setError("Network error. Please try again.");
+    } finally {
+      setLoading(false);
+    }
+  }
 
   return (
     <div className="max-w-md mx-auto px-6 py-16">
@@ -20,13 +58,7 @@ export default function LoginPage() {
           </CardDescription>
         </CardHeader>
         <CardContent>
-          <form
-            onSubmit={(e) => {
-              e.preventDefault();
-              alert(isSignUp ? "Account created (demo)" : "Signed in (demo)");
-            }}
-            className="space-y-4"
-          >
+          <form onSubmit={handleSubmit} className="space-y-4">
             {isSignUp && (
               <div className="grid grid-cols-2 gap-4">
                 <div>
@@ -64,27 +96,30 @@ export default function LoginPage() {
                   <label htmlFor="address" className="block text-sm font-medium text-gray-700 mb-1">
                     Address
                   </label>
-                  <Input id="address" name="address" placeholder="123 Main St, Dallas, TX" required />
+                  <Input id="address" name="address" placeholder="123 Main St, Dallas, TX" />
                 </div>
-
                 <div>
                   <label htmlFor="payment_info" className="block text-sm font-medium text-gray-700 mb-1">
                     Payment Info (Card Number)
                   </label>
-                  <Input id="payment_info" name="payment_info" placeholder="4242 4242 4242 4242" required />
+                  <Input id="payment_info" name="payment_info" placeholder="4242 4242 4242 4242" />
                 </div>
               </>
             )}
 
-            <Button type="submit" className="w-full">
-              {isSignUp ? "Create Account" : "Sign In"}
+            {error && (
+              <p className="text-sm text-red-600 bg-red-50 px-3 py-2 rounded-md">{error}</p>
+            )}
+
+            <Button type="submit" className="w-full" disabled={loading}>
+              {loading ? "Please wait..." : isSignUp ? "Create Account" : "Sign In"}
             </Button>
           </form>
 
           <div className="mt-6 text-center text-sm text-gray-500">
             {isSignUp ? "Already have an account?" : "Don't have an account?"}{" "}
             <button
-              onClick={() => setIsSignUp(!isSignUp)}
+              onClick={() => { setIsSignUp(!isSignUp); setError(""); }}
               className="text-gray-900 font-medium underline underline-offset-2 hover:text-gray-700"
             >
               {isSignUp ? "Sign In" : "Sign Up"}

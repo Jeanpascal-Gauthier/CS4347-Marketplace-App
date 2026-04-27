@@ -1,10 +1,70 @@
 "use client";
 
+import { useState, useEffect } from "react";
+import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 
 export default function CreateListingPage() {
+  const router = useRouter();
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
+  const [success, setSuccess] = useState("");
+
+  useEffect(() => {
+    if (!localStorage.getItem("user")) {
+      router.push("/login");
+    }
+  }, [router]);
+
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    setError("");
+    setSuccess("");
+
+    const stored = localStorage.getItem("user");
+    if (!stored) {
+      router.push("/login");
+      return;
+    }
+
+    const user = JSON.parse(stored);
+    const form = new FormData(e.currentTarget);
+
+    const payload = {
+      seller_id: user.user_id,
+      title: form.get("title"),
+      description: form.get("description"),
+      price: form.get("price"),
+      quantity: form.get("quantity"),
+      condition: form.get("condition"),
+    };
+
+    setLoading(true);
+    try {
+      const res = await fetch("/api/listings", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
+      const data = await res.json();
+
+      if (!res.ok) {
+        setError(data.error ?? "Failed to create listing");
+        return;
+      }
+
+      setSuccess(`Listing #${data.listing_id} created successfully!`);
+      (e.target as HTMLFormElement).reset();
+      setTimeout(() => router.push("/browse"), 1500);
+    } catch {
+      setError("Network error. Please try again.");
+    } finally {
+      setLoading(false);
+    }
+  }
+
   return (
     <div className="max-w-2xl mx-auto px-6 py-16">
       <Card>
@@ -15,13 +75,7 @@ export default function CreateListingPage() {
           </CardDescription>
         </CardHeader>
         <CardContent>
-          <form
-            onSubmit={(e) => {
-              e.preventDefault();
-              alert("Listing created (demo)");
-            }}
-            className="space-y-4"
-          >
+          <form onSubmit={handleSubmit} className="space-y-4">
             <div>
               <label htmlFor="title" className="block text-sm font-medium text-gray-700 mb-1">
                 Product Title
@@ -48,13 +102,13 @@ export default function CreateListingPage() {
                 <label htmlFor="price" className="block text-sm font-medium text-gray-700 mb-1">
                   Price ($)
                 </label>
-                <Input id="price" name="price" type="number" step="0.01" min="0" placeholder="29.99" required />
+                <Input id="price" name="price" type="number" step="0.01" min="0" placeholder="0.00" required />
               </div>
               <div>
                 <label htmlFor="quantity" className="block text-sm font-medium text-gray-700 mb-1">
                   Quantity Available
                 </label>
-                <Input id="quantity" name="quantity" type="number" min="1" placeholder="1" required />
+                <Input id="quantity" name="quantity" type="number" min="0" placeholder="0" required />
               </div>
             </div>
 
@@ -69,11 +123,11 @@ export default function CreateListingPage() {
                 required
               >
                 <option value="">Select condition...</option>
-                <option value="new">New</option>
-                <option value="like_new">Like New</option>
-                <option value="good">Good</option>
-                <option value="fair">Fair</option>
-                <option value="poor">Poor</option>
+                <option value="New">New</option>
+                <option value="Like New">Like New</option>
+                <option value="Good">Good</option>
+                <option value="Fair">Fair</option>
+                <option value="Poor">Poor</option>
               </select>
             </div>
 
@@ -85,8 +139,15 @@ export default function CreateListingPage() {
               <p className="text-xs text-gray-400 mt-1">Upload a photo of your product (JPG, PNG)</p>
             </div>
 
-            <Button type="submit" className="w-full">
-              Publish Listing
+            {error && (
+              <p className="text-sm text-red-600 bg-red-50 px-3 py-2 rounded-md">{error}</p>
+            )}
+            {success && (
+              <p className="text-sm text-green-700 bg-green-50 px-3 py-2 rounded-md">{success}</p>
+            )}
+
+            <Button type="submit" className="w-full" disabled={loading}>
+              {loading ? "Publishing..." : "Publish Listing"}
             </Button>
           </form>
         </CardContent>

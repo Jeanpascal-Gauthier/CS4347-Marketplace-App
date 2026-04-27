@@ -1,0 +1,6 @@
+order_id,buyer_id,listing_id,total_price,quantity,status,shipping_addr,payment_info,order_date
+1,5,1,89.99,1,Delivered,"111 Cedar Blvd, Irving, TX 75038",Visa-4000,2026-04-05
+2,6,2,1499.00,1,Shipped,"222 Birch St, Garland, TX 75040",Mastercard-5100,2026-04-07
+3,7,4,229.99,1,Delivered,"333 Walnut Ave, Frisco, TX 75034",Amex-3782,2026-04-08
+4,8,3,90.00,2,Pending,"444 Spruce Dr, McKinney, TX 75069",Visa-4012,2026-04-10
+5,9,6,310.00,1,Processing,"555 Willow Ct, Allen, TX 75002",Mastercard-5425,2026-04-12
