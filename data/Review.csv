@@ -1,0 +1,4 @@
+review_id,order_id,reviewer_id,seller_id,rating,comment,review_date
+1,1,5,1,5,"Great jacket, exactly as described. Fast shipping!",2026-04-08
+2,2,6,2,5,"MacBook was in perfect condition. Highly recommend this seller.",2026-04-10
+3,3,7,4,4,"Headphones work great. Packaging could have been better.",2026-04-11

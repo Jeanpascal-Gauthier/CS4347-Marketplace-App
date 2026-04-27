@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 
 export default function Home() {
   return (
-    <div className="max-w-6xl mx-auto px-6 py-20">
+    <div className="max-w-6xl mx-auto px-6 py-20 flex items-center justify-center">
       <div className="text-center">
         <h1 className="text-5xl font-bold text-gray-900 mb-4">
           Buy & Sell with Ease
@@ -15,7 +15,7 @@ export default function Home() {
           <Link href="/browse">
             <Button className="px-6 py-3 text-base">Browse Marketplace</Button>
           </Link>
-          <Link href="/create-listing">
+          <Link href="/login">
             <Button variant="outline" className="px-6 py-3 text-base">Start Selling</Button>
           </Link>
         </div>
