@@ -49,6 +49,9 @@ export default function NavClient() {
       <Link href="/orders" className="text-sm text-gray-600 hover:text-gray-900 transition-colors">
         Orders
       </Link>
+      <Link href="/sql-injection" className="text-sm text-gray-600 hover:text-gray-900 transition-colors">
+        SQL Demo
+      </Link>
 
       {/* Cart icon with badge */}
       <Link href="/cart" className="relative text-gray-600 hover:text-gray-900 transition-colors">

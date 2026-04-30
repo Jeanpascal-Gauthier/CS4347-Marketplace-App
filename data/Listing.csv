@@ -1,13 +1,13 @@
 listing_id,seller_id,title,description,price,quantity,condition,image_url,date_posted
-1,1,Vintage Leather Jacket,"Classic brown leather jacket in great condition. Size M.",89.99,1,Good,https://picsum.photos/400/300?random=1,2026-03-28
-2,1,MacBook Pro 14 2024,"M3 Pro chip, 18GB RAM, 512GB SSD. Barely used, comes with charger.",1499.00,1,Like New,https://picsum.photos/400/300?random=2,2026-03-30
-3,3,Calculus Textbook 8th Edition,"James Stewart Calculus. Some highlighting but all pages intact.",45.00,3,Fair,https://picsum.photos/400/300?random=3,2026-04-01
-4,1,Wireless Noise-Canceling Headphones,"Sony WH-1000XM5. Black. Includes case and cable.",229.99,2,New,https://picsum.photos/400/300?random=4,2026-04-02
-5,1,Standing Desk Adjustable,"Electric sit-stand desk, 48x24 inches. White top, black frame.",199.00,1,Good,https://picsum.photos/400/300?random=5,2026-04-03
+1,1,Vintage Leather Jacket,"Classic brown leather jacket in great condition. Size M.",89.99,1,Good,https://picsum.photos/400/300,2026-03-28
+2,1,MacBook Pro 14 2024,"M3 Pro chip, 18GB RAM, 512GB SSD. Barely used, comes with charger.",1499.00,1,Like New,https://picsum.photos/400/300,2026-03-30
+3,3,Calculus Textbook 8th Edition,"James Stewart Calculus. Some highlighting but all pages intact.",45.00,3,Fair,https://picsum.photos/400/300,2026-04-01
+4,1,Wireless Noise-Canceling Headphones,"Sony WH-1000XM5. Black. Includes case and cable.",229.99,2,New,https://picsum.photos/400/300,2026-04-02
+5,1,Standing Desk Adjustable,"Electric sit-stand desk, 48x24 inches. White top, black frame.",199.00,1,Good,https://picsum.photos/400/300,2026-04-03
 6,3,Nintendo Switch OLED,"White model with dock. Includes Pro Controller and 3 games.",310.00,1,Like New,https://picsum.photos/400/300?random=6,2026-04-02
-7,2,Ergonomic Office Chair,"Mesh back chair with lumbar support and adjustable height. Minor wear on armrests.",129.00,2,Good,https://picsum.photos/400/300?random=7,2026-04-04
-8,1,Canon EOS Rebel T7,"DSLR camera body with 18-55mm lens, battery, and strap. Great for beginners.",379.99,1,Like New,https://picsum.photos/400/300?random=8,2026-04-04
-9,1,KitchenAid Stand Mixer,"5-quart tilt-head mixer in red. Includes whisk, paddle, and dough hook.",249.50,1,Good,https://picsum.photos/400/300?random=9,2026-04-05
-10,3,Mountain Bike 27.5in,"Aluminum frame trail bike with front suspension and disc brakes. Recently tuned.",420.00,1,Fair,https://picsum.photos/400/300?random=10,2026-04-05
-11,2,Python Programming Book,"Beginning Python guide with exercises and sample projects. Clean copy.",28.00,5,New,https://picsum.photos/400/300?random=11,2026-04-06
-12,1,Bluetooth Speaker Portable,"Water-resistant speaker with strong bass and 12-hour battery life.",59.99,4,Like New,https://picsum.photos/400/300?random=12,2026-04-03
+7,2,Ergonomic Office Chair,"Mesh back chair with lumbar support and adjustable height. Minor wear on armrests.",129.00,2,Good,https://picsum.photos/400/300,2026-04-04
+8,1,Canon EOS Rebel T7,"DSLR camera body with 18-55mm lens, battery, and strap. Great for beginners.",379.99,1,Like New,https://picsum.photos/400/300,2026-04-04
+9,1,KitchenAid Stand Mixer,"5-quart tilt-head mixer in red. Includes whisk, paddle, and dough hook.",249.50,1,Good,https://picsum.photos/400/300,2026-04-05
+10,3,Mountain Bike 27.5in,"Aluminum frame trail bike with front suspension and disc brakes. Recently tuned.",420.00,1,Fair,https://picsum.photos/400/300,2026-04-05
+11,2,Python Programming Book,"Beginning Python guide with exercises and sample projects. Clean copy.",28.00,5,New,https://picsum.photos/400/300,2026-04-06
+12,1,Bluetooth Speaker Portable,"Water-resistant speaker with strong bass and 12-hour battery life.",59.99,4,Like New,https://picsum.photos/400/300,2026-04-03
